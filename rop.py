@@ -1,5 +1,32 @@
 from pwn import *
 
+# Reference
+# https://github.com/Gallopsled/pwntools
+# https://qiita.com/8ayac/items/12a3523394080e56ad5a
+
+def send_payload(payload):
+	log.info("payload : %s" % repr(payload))
+	p.send(payload)
+	return
+
+def sendline_payload(payload):
+	log.info("payload : %s" % repr(payload))
+	p.sendline(payload)
+	return
+
+def recv_loginfo():
+	recv = p.recv()
+	log.info("recv : %s" % repr(recv))
+	return
+def recvline_loginfo():
+	recvline = p.recvline()
+	log.info("recvline : %s" % repr(recvline))
+	return
+
+def print_address(s, addr):
+	log.info(s + ' : ' + hex(addr))
+	return
+
 binary = "./"
 host ="exploit.example.com"
 port = 31337
